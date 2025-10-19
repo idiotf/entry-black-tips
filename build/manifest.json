@@ -1,0 +1,19 @@
+{
+  "name": "Entry Black Tips",
+  "description": "엔트리에서 원하는 글을 숨겨줍니다.",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [{
+    "matches": ["https://playentry.org/*"],
+    "js": ["dist/injected.js"],
+    "run_at": "document_start"
+  }, {
+    "matches": ["https://playentry.org/*"],
+    "js": ["dist/content.js"],
+    "world": "MAIN",
+    "run_at": "document_start"
+  }]
+}
