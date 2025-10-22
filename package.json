@@ -2,7 +2,6 @@
   "name": "entry-login-count",
   "module": "src/index.ts",
   "devDependencies": {
-    "@types/bun": "latest",
     "@types/chrome": "^0.1.24"
   },
   "peerDependencies": {
@@ -11,7 +10,7 @@
   "private": true,
   "scripts": {
     "watch": "bun build --watch --sourcemap=inline --no-clear-screen --minify --format=iife --outfile=build/dist/content.js src/content/index.ts & bun build --watch --sourcemap=inline --no-clear-screen --minify --format=iife --outfile=build/dist/injected.js src/injected/index.ts",
-    "build": "bun build --minify --format=iife --outfile=build/dist/content.js src/content.ts && bun build --minify --format=iife --outfile=build/dist/injectedjs src/injected.ts"
+    "build": "bun build --minify --format=iife --outfile=build/dist/content.js src/content/index.ts && bun build --minify --format=iife --outfile=build/dist/injected.js src/injected/index.ts"
   },
   "type": "module"
 }
