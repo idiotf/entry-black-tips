@@ -7,6 +7,12 @@ import { getBlackTipsKey } from '../const'
 
   const encoder = new TextEncoder
 
+  const allowedQueries = [
+    'query SELECT_QNA_LIST',
+    'query SELECT_DISCUSS_LIST',
+    'query SELECT_ENTRYSTORY',
+  ]
+
   const originalFetch = fetch
   self.fetch = async (url: string | Request | URL, init?: RequestInit) => {
     let resSent: Response | null = null
@@ -16,7 +22,7 @@ import { getBlackTipsKey } from '../const'
       if (typeof body != 'string') return originalFetch(url, init)
 
       const { query } = JSON.parse(body)
-      if (!query.trim().startsWith('query SELECT_DISCUSS_LIST')) return originalFetch(url, init)
+      if (!allowedQueries.some(q => query.trim().startsWith(q))) return originalFetch(url, init)
 
       const res = resSent = await originalFetch(url, init)
 
