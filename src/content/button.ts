@@ -20,14 +20,13 @@ function getDiscussId(menuList: Element) {
 
   const reactFiber = { ...discussItem }[reactFiberKey]
   if (!(
-    reactFiber instanceof Object && 'child' in reactFiber &&
-    reactFiber.child instanceof Object && 'sibling' in reactFiber.child &&
-    reactFiber.child.sibling instanceof Object && 'child' in reactFiber.child.sibling &&
-    reactFiber.child.sibling.child instanceof Object && 'pendingProps' in reactFiber.child.sibling.child &&
-    reactFiber.child.sibling.child.pendingProps instanceof Object && 'target' in reactFiber.child.sibling.child.pendingProps
+    reactFiber instanceof Object && 'return' in reactFiber &&
+    reactFiber.return instanceof Object && 'return' in reactFiber.return &&
+    reactFiber.return.return instanceof Object && 'pendingProps' in reactFiber.return.return &&
+    reactFiber.return.return.pendingProps instanceof Object && 'id' in reactFiber.return.return.pendingProps
   )) return next.router.query.id
 
-  return reactFiber.child.sibling.child.pendingProps.target
+  return reactFiber.return.return.pendingProps.id
 }
 
 const lists = new WeakSet<Element>()
