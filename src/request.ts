@@ -2,7 +2,7 @@ import { entryOrigin } from './const'
 
 let reqId = 0
 
-export function request(handleType: string, data: unknown, transfer?: Transferable[]) {
+export function request(handleType: string, data?: unknown, transfer?: Transferable[]) {
   const currentReqId = reqId++
   postMessage({ [currentReqId]: { [handleType]: data } }, entryOrigin, transfer)
 

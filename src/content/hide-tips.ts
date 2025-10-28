@@ -2,7 +2,7 @@ import { request } from '../request'
 import { getBlackTipsKey } from '../const'
 
 (async () => {
-  const blackTips = await request(getBlackTipsKey, 0)
+  const blackTips = await request(getBlackTipsKey)
   if (!Array.isArray(blackTips)) return
 
   const encoder = new TextEncoder
